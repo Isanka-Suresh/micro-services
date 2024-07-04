@@ -1,0 +1,26 @@
+server:
+  port: 8084
+  servlet:
+    context-path: /app
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+spring:
+  application:
+    name: payment-service
+  datasource:
+    username: root
+    password: 1234
+    url: jdbc:mysql://localhost:3306/microservice_pay?createDatabaseIfNotExist=true
+  config:
+    import: "optional:configserver:http://localhost:8089"
+
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
